@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  oversip:
+    build:
+      context: .
+    command:
+      - /bin/oversip-wait.sh
+    ports:
+      - "5060:5060/udp"
+    restart: always
+    volumes:
+      - /dev/log:/dev/log
