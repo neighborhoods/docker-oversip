@@ -41,6 +41,10 @@ module OverSIP::SIP
       @uri_modified = true
     end
     def modified?
+      # Oversip uses this to determine if header should be rebuilt, but the
+      # to_s method resets this flag (it has a side effect) which is a buggy
+      # premature optimization that breaks things (printing the Uri for debugging
+      # resets the flag; it's an anti-heisenbug)
       true
     end
   end
