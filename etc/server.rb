@@ -160,26 +160,17 @@ def (OverSIP::SipEvents).on_request request
   end
 
   if request.sip_method == :INVITE
-    # log_debug "got ruri #{request.ruri}"
-    # log_debug "got from #{request.from}"
-    # log_debug "got to #{request.to}"
-    # request.ruri = fixup_uri request.ruri
-    # request.to = fixup_uri request.to
-    # request.from = fixup_uri request.from
+    log_debug "got ruri #{request.ruri}"
+    log_debug "got from #{request.from}"
+    log_debug "got to #{request.to}"
+
     fixup_uri request.ruri
     fixup_uri request.to
     fixup_uri request.from
-    #
-    # request.ruri.modified!
-    # request.to.modified!
-    # request.from.modified!
 
     log_debug "modified ruri #{request.ruri}"
     log_debug "modified from #{request.from}"
-    log_debug "modified from #{request.from.uri}"
     log_debug "modified to #{request.to}"
-    log_debug "modified ? #{request.from.modified?}"
-    log_debug "modified #{request.to_s}"
   end
 
   # An outgoing initial request.
